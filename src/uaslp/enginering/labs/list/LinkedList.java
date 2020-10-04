@@ -1,9 +1,13 @@
 package uaslp.enginering.labs.list;
 
+
+import uaslp.enginering.labs.list.model.Student;
+
+
 public class LinkedList {
     private Node front;
     private Node tail;
-    private int count;
+    private int size;
 
     public enum InsertPosition {
         BEFORE,
@@ -13,12 +17,8 @@ public class LinkedList {
     public class Iterator {
         public Node currentNode;
 
-        public Iterator(){
+        public Iterator() {
             this.currentNode = front;
-        }
-
-        public Node method(Node node) {
-            return node;
         }
 
         public boolean hasNext() {
@@ -26,13 +26,16 @@ public class LinkedList {
         }
 
         public Student next() {
-            if(currentNode ==null)
+
+            if(currentNode == null){
                 return null;
+            }
 
-        Student currentStudent = currentNode.getStudent();
-        currentNode = currentNode.getNext();
+            Student currentStudent = currentNode.getStudent();
 
-        return currentStudent;
+            currentNode = currentNode.getNext();
+
+            return currentStudent;
         }
     }
 
@@ -55,54 +58,45 @@ public class LinkedList {
     public void add(Student student) {
         Node newNode = new Node(student);
 
-        newNode.setStudent(student);
-
-        if (count == 0) {
-            front = newNode;
-            tail = newNode;
+        if (size == 0) {
+            front = tail = newNode;
         } else {
-            newNode.setPrevious(tail);
             tail.setNext(newNode);
+            newNode.setPrevious(tail);
             tail = newNode;
         }
 
-
-        count++;
-
-    }
-
-    public void delete(Student student) {
+        size++;
 
     }
 
     public void delete(int index) {
-        Node temporaryNode = front;
 
-        if (count == 0) {
-            return;
-        }else if(index < 0 || index >= count){
+        if (index < 0 || index >= size) {
             return;
         }
 
 
-        if (front == tail) {
+        Node currentNode = front;
+
+        for (int counter = 0; counter < index && counter < size; counter++) {
+            currentNode = currentNode.getNext();
+        }
+
+        if (currentNode == front && currentNode == tail) {
             front = null;
             tail = null;
-        } else if (index == 0){
-            front = front.getNext();
+        } else if (currentNode == front) {
+            front = currentNode.getNext();
             front.setPrevious(null);
-        }else if (index == count - 1){
-            tail = tail.getPrevious();
+        } else if (currentNode == tail) {
+            tail = currentNode.getPrevious();
             tail.setNext(null);
-        }else{
-            temporaryNode = front;
-            for ( int i = 0; i != index ; i++ , temporaryNode = temporaryNode.getNext() );
-            front.setNext(tail);
-            tail.setPrevious(front);
-            temporaryNode = null;
+        } else {
+            currentNode.getPrevious().setNext(currentNode.getNext());
+            currentNode.getNext().setPrevious(currentNode.getPrevious());
         }
-
-        count--;
+        size--;
     }
 
     public Iterator getIterator() {
@@ -110,58 +104,59 @@ public class LinkedList {
     }
 
     public int size() {
-        return count;
+        return size;
     }
 
     public Student getAt(int index) {
-        Node iteratorNode = front;
-        int countIterator = 0;
-        while (countIterator < index && iteratorNode.getNext() != null) {
-            iteratorNode = iteratorNode.getNext();
-            countIterator++;
+        Node currentNode = front;
+
+        for (int counter = 0; counter < index && counter < size; counter++) {
+            currentNode = currentNode.getNext();
         }
-        return iteratorNode.getStudent();
+
+        return currentNode != null ? currentNode.getStudent() : null;
     }
 
     public void insert(Student reference, Student newStudent, InsertPosition insertPosition) {
-        if(count==0)
+
+        if (size == 0) {
             return;
+        }
 
         Node currentNode = front;
 
-        while(!currentNode.getStudent().equals(reference)){
+        while (!currentNode.getStudent().equals(reference)) {
             currentNode = currentNode.getNext();
+        }
+
+        if (currentNode == null) {
+            return;
         }
 
         Node newNode = new Node(newStudent);
 
-        if(InsertPosition.BEFORE.equals(insertPosition)){
-
+        if (InsertPosition.BEFORE.equals(insertPosition)) {
             Node previous = currentNode.getPrevious();
             newNode.setNext(currentNode);
             newNode.setPrevious(previous);
             currentNode.setPrevious(newNode);
-
-            if(front == currentNode){
-                front=newNode;
-            }else{
+            if (front == currentNode) {
+                front = newNode;
+            } else {
                 previous.setNext(newNode);
             }
-
-        }else{
-            Node next =currentNode.getNext();
+        } else {
+            Node next = currentNode.getNext();
             newNode.setPrevious(currentNode);
             newNode.setNext(next);
             currentNode.setNext(newNode);
-
-            if(tail == currentNode){
+            if (tail == currentNode) {
                 tail = newNode;
-            }else{
+            } else {
                 next.setPrevious(newNode);
             }
         }
 
-        count ++;
-
+        size++;
     }
 }
