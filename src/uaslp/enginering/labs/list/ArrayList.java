@@ -1,6 +1,8 @@
 package uaslp.enginering.labs.list;
 
-public class ArrayList<T> {
+import uaslp.enginering.labs.list.model.Lists;
+
+public class ArrayList<T> extends Lists {
 
     public enum InsertPosition {
         BEFORE,
@@ -37,8 +39,8 @@ public class ArrayList<T> {
         elements = new Object[initialSize];
     }
 
-    public void add(T element) {
-
+    @Override
+    public void add(Object element) {
         if (lastIndex == elements.length) {
             increaseArraySize();
         }
@@ -66,7 +68,7 @@ public class ArrayList<T> {
         return new Iterator();
     }
 
-    public int size() {
+    public int  size() {
         return lastIndex;
     }
 
@@ -74,24 +76,25 @@ public class ArrayList<T> {
         return index < lastIndex ? (T)elements[index] : null;
     }
 
-    public void insert(T reference, T newStudent, InsertPosition insertPosition) {
 
+    @Override
+    public void insert(Object reference, Object newElement, Lists.InsertPosition position) {
         if (lastIndex == elements.length) {
             increaseArraySize();
         }
 
         for (int index = 0; index < lastIndex; index++) {
             if (elements[index].equals(reference)) {
-                if (insertPosition.equals(InsertPosition.BEFORE)) {
+                if (position.equals(InsertPosition.BEFORE)) {
                     for (int j = lastIndex; j > index; j--) {
                         elements[j] = elements[j - 1];
                     }
-                    elements[index] = newStudent;
+                    elements[index] = newElement;
                 } else {
                     for (int j = lastIndex; j > index + 1; j--) {
                         elements[j] = elements[j - 1];
                     }
-                    elements[index + 1] = newStudent;
+                    elements[index + 1] = newElement;
                 }
                 break;
             }

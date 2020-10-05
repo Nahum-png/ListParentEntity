@@ -1,10 +1,11 @@
 package uaslp.enginering.labs.list;
 
 
-import uaslp.enginering.labs.list.model.Student;
+import uaslp.enginering.labs.list.model.Lists;
+import uaslp.enginering.labs.list.model.Object;
 
 
-public class LinkedList {
+public class LinkedList<T> extends Lists {
     private Node front;
     private Node tail;
     private int size;
@@ -25,17 +26,17 @@ public class LinkedList {
             return currentNode != null;
         }
 
-        public Student next() {
+        public Object next() {
 
             if(currentNode == null){
                 return null;
             }
 
-            Student currentStudent = currentNode.getStudent();
+            Object currentObject = currentNode.getElement();
 
             currentNode = currentNode.getNext();
 
-            return currentStudent;
+            return currentObject;
         }
     }
 
@@ -55,8 +56,14 @@ public class LinkedList {
         this.tail = tail;
     }
 
-    public void add(Student student) {
-        Node newNode = new Node(student);
+    public void add(Object object) {
+
+
+    }
+
+    @Override
+    public void add(java.lang.Object element) {
+        Node newNode = new Node(element);
 
         if (size == 0) {
             front = tail = newNode;
@@ -67,7 +74,6 @@ public class LinkedList {
         }
 
         size++;
-
     }
 
     public void delete(int index) {
@@ -107,25 +113,25 @@ public class LinkedList {
         return size;
     }
 
-    public Student getAt(int index) {
+    public Object getAt(int index) {
         Node currentNode = front;
 
         for (int counter = 0; counter < index && counter < size; counter++) {
             currentNode = currentNode.getNext();
         }
 
-        return currentNode != null ? currentNode.getStudent() : null;
+        return currentNode != null ? currentNode.getElement() : null;
     }
 
-    public void insert(Student reference, Student newStudent, InsertPosition insertPosition) {
-
+    @Override
+    public void insert(java.lang.Object reference, java.lang.Object newElement, Lists.InsertPosition position) {
         if (size == 0) {
             return;
         }
 
         Node currentNode = front;
 
-        while (!currentNode.getStudent().equals(reference)) {
+        while (!currentNode.getElement().equals(reference)) {
             currentNode = currentNode.getNext();
         }
 
@@ -133,9 +139,9 @@ public class LinkedList {
             return;
         }
 
-        Node newNode = new Node(newStudent);
+        Node newNode = new Node(newElement);
 
-        if (InsertPosition.BEFORE.equals(insertPosition)) {
+        if (InsertPosition.BEFORE.equals(position)) {
             Node previous = currentNode.getPrevious();
             newNode.setNext(currentNode);
             newNode.setPrevious(previous);
@@ -159,4 +165,5 @@ public class LinkedList {
 
         size++;
     }
+
 }

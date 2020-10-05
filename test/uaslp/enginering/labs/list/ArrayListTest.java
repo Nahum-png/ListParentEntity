@@ -5,13 +5,13 @@ import uaslp.enginering.labs.model.Student;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ArrayListTest {
+public class ArrayListTest extends Lists{
 
 
     @Test
     public void givenNewList_whenSize_thenZeroIsReturned() {
         // Given:
-        ArrayList<Student> arrayList = new ArrayList<>();
+        ArrayList<Element> arrayList = new ArrayList<>();
 
         // When:
         int size = arrayList.size();

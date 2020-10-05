@@ -1,10 +1,10 @@
 package uaslp.enginering.labs.list.model;
 
-public class Student {
+public class Object {
     private String name;
 
 
-    public Student(String name ) {
+    public Object(String name ) {
         this.name=name;
     }
 
