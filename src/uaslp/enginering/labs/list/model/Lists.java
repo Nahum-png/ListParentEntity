@@ -13,6 +13,7 @@ public abstract class Lists<T> {
 
     public abstract void add(T element);
 
+
     public abstract void delete(int index);
 
     public abstract void insert(T reference, T newElement, InsertPosition position);

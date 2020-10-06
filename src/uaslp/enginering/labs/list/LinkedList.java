@@ -4,10 +4,12 @@ package uaslp.enginering.labs.list;
 import uaslp.enginering.labs.list.model.Lists;
 import uaslp.enginering.labs.list.model.Object;
 
+import java.util.Objects;
 
-public class LinkedList<T> extends Lists {
-    private Node front;
-    private Node tail;
+
+public class LinkedList<T> extends Lists<T> {
+    private Node<T> front;
+    private Node<T> tail;
     private int size;
 
     public enum InsertPosition {
@@ -16,7 +18,7 @@ public class LinkedList<T> extends Lists {
     }
 
     public class Iterator {
-        public Node currentNode;
+        public Node<T> currentNode;
 
         public Iterator() {
             this.currentNode = front;
@@ -40,30 +42,25 @@ public class LinkedList<T> extends Lists {
         }
     }
 
-    public Node getFront() {
+    public Node<T> getFront() {
         return front;
     }
 
-    public void setFront(Node front) {
+    public void setFront(Node<T> front) {
         this.front = front;
     }
 
-    public Node getTail() {
+    public Node<T> getTail() {
         return tail;
     }
 
-    public void setTail(Node tail) {
+    public void setTail(Node<T> tail) {
         this.tail = tail;
-    }
-
-    public void add(Object object) {
-
-
     }
 
     @Override
     public void add(java.lang.Object element) {
-        Node newNode = new Node(element);
+        Node<T> newNode = new Node<T>(element);
 
         if (size == 0) {
             front = tail = newNode;
@@ -76,6 +73,8 @@ public class LinkedList<T> extends Lists {
         size++;
     }
 
+   
+
     public void delete(int index) {
 
         if (index < 0 || index >= size) {
@@ -83,7 +82,7 @@ public class LinkedList<T> extends Lists {
         }
 
 
-        Node currentNode = front;
+        Node<T> currentNode = front;
 
         for (int counter = 0; counter < index && counter < size; counter++) {
             currentNode = currentNode.getNext();
@@ -114,7 +113,7 @@ public class LinkedList<T> extends Lists {
     }
 
     public Object getAt(int index) {
-        Node currentNode = front;
+        Node<T> currentNode = front;
 
         for (int counter = 0; counter < index && counter < size; counter++) {
             currentNode = currentNode.getNext();
@@ -129,9 +128,9 @@ public class LinkedList<T> extends Lists {
             return;
         }
 
-        Node currentNode = front;
+        Node<T> currentNode = front;
 
-        while (!currentNode.getElement().equals(reference)) {
+        while (!Objects.equals(currentNode.getElement(), reference)) {
             currentNode = currentNode.getNext();
         }
 
@@ -139,10 +138,10 @@ public class LinkedList<T> extends Lists {
             return;
         }
 
-        Node newNode = new Node(newElement);
+        Node<T> newNode = new Node<T>(newElement);
 
-        if (InsertPosition.BEFORE.equals(position)) {
-            Node previous = currentNode.getPrevious();
+        if (Lists.InsertPosition.BEFORE.equals(position)) {
+            Node<T> previous = currentNode.getPrevious();
             newNode.setNext(currentNode);
             newNode.setPrevious(previous);
             currentNode.setPrevious(newNode);
@@ -152,7 +151,7 @@ public class LinkedList<T> extends Lists {
                 previous.setNext(newNode);
             }
         } else {
-            Node next = currentNode.getNext();
+            Node<T> next = currentNode.getNext();
             newNode.setPrevious(currentNode);
             newNode.setNext(next);
             currentNode.setNext(newNode);

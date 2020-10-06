@@ -1,6 +1,10 @@
 package uaslp.enginering.labs.list;
 
 import org.junit.jupiter.api.Test;
+import uaslp.enginering.labs.list.model.Lists;
+import uaslp.enginering.labs.list.model.Object;
+
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,7 +14,7 @@ public class LinkedListTest {
     @Test
     public void givenNewList_whenSize_thenZeroIsReturned() {
         // Given:
-        LinkedList list = new LinkedList();
+        LinkedList list = new LinkedList<>();
 
         // When:
         int size = list.size();
@@ -136,7 +140,7 @@ public class LinkedListTest {
         list.add(new Student("Francisco"));
 
         // When:
-        list.insert(reference, new Student("Lupita"), LinkedList.InsertPosition.BEFORE);
+        list.insert(reference, new Student("Lupita"), Lists.InsertPosition.BEFORE);
 
         // Then:
         assertEquals(4, list.size());
@@ -157,7 +161,7 @@ public class LinkedListTest {
         list.add(reference);
 
         // When:
-        list.insert(reference, new Student("Lupita"), LinkedList.InsertPosition.BEFORE);
+        list.insert(reference, new Student("Lupita"), Lists.InsertPosition.BEFORE);
 
         // Then:
         assertEquals(4, list.size());
@@ -178,7 +182,7 @@ public class LinkedListTest {
         list.add(new Student("Francisco"));
 
         // When:
-        list.insert(reference, new Student("Lupita"), LinkedList.InsertPosition.BEFORE);
+        list.insert(reference, new Student("Lupita"), Lists.InsertPosition.BEFORE);
 
         // Then:
         assertEquals(4, list.size());
@@ -199,7 +203,7 @@ public class LinkedListTest {
         list.add(new Student("Francisco"));
 
         // When:
-        list.insert(reference, new Student("Lupita"), LinkedList.InsertPosition.AFTER);
+        list.insert(reference, new Student("Lupita"), Lists.InsertPosition.AFTER);
 
         // Then:
         assertEquals(4, list.size());
@@ -220,7 +224,7 @@ public class LinkedListTest {
         list.add(reference);
 
         // When:
-        list.insert(reference, new Student("Lupita"), LinkedList.InsertPosition.AFTER);
+        list.insert(reference, new Student("Lupita"), Lists.InsertPosition.AFTER);
 
         // Then:
         assertEquals(4, list.size());
@@ -241,7 +245,7 @@ public class LinkedListTest {
         list.add(new Student("Francisco"));
 
         // When:
-        list.insert(reference, new Student("Lupita"), LinkedList.InsertPosition.AFTER);
+        list.insert(reference, new Student("Lupita"), Lists.InsertPosition.AFTER);
 
         // Then:
         assertEquals(4, list.size());
@@ -278,7 +282,7 @@ public class LinkedListTest {
         // Then:
         assertNotNull(iterator);
         assertTrue(iterator.hasNext());
-        Student student = iterator.next();
+        Object student = iterator.next();
         assertNotNull(student);
         assertEquals("Ivan", student.getName());
         assertFalse(iterator.hasNext());

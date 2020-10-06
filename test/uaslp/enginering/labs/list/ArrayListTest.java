@@ -1,17 +1,17 @@
 package uaslp.enginering.labs.list;
 
 import org.junit.jupiter.api.Test;
-import uaslp.enginering.labs.model.Student;
+import uaslp.enginering.labs.list.model.Lists;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ArrayListTest extends Lists{
+public class ArrayListTest {
 
 
     @Test
     public void givenNewList_whenSize_thenZeroIsReturned() {
         // Given:
-        ArrayList<Element> arrayList = new ArrayList<>();
+        Lists<Student> arrayList = new ArrayList<>();
 
         // When:
         int size = arrayList.size();
@@ -156,7 +156,7 @@ public class ArrayListTest extends Lists{
         arrayList.add(new Student("Francisco"));
 
         // When:
-        arrayList.insert(reference, new Student("Lupita"), ArrayList.InsertPosition.BEFORE);
+        arrayList.insert(reference, new Student("Lupita"), Lists.InsertPosition.BEFORE);
 
         // Then:
         assertEquals(4, arrayList.size());
@@ -177,7 +177,7 @@ public class ArrayListTest extends Lists{
         arrayList.add(reference);
 
         // When:
-        arrayList.insert(reference, new Student("Lupita"), ArrayList.InsertPosition.BEFORE);
+        arrayList.insert(reference, new Student("Lupita"), Lists.InsertPosition.BEFORE);
 
         // Then:
         assertEquals(4, arrayList.size());
@@ -198,7 +198,7 @@ public class ArrayListTest extends Lists{
         arrayList.add(new Student("Francisco"));
 
         // When:
-        arrayList.insert(reference, new Student("Lupita"), ArrayList.InsertPosition.BEFORE);
+        arrayList.insert(reference, new Student("Lupita"), Lists.InsertPosition.BEFORE);
 
         // Then:
         assertEquals(4, arrayList.size());
@@ -219,7 +219,7 @@ public class ArrayListTest extends Lists{
         arrayList.add(new Student("Francisco"));
 
         // When:
-        arrayList.insert(reference, new Student("Lupita"), ArrayList.InsertPosition.AFTER);
+        arrayList.insert(reference, new Student("Lupita"), Lists.InsertPosition.AFTER);
 
         // Then:
         assertEquals(4, arrayList.size());
@@ -240,7 +240,7 @@ public class ArrayListTest extends Lists{
         arrayList.add(reference);
 
         // When:
-        arrayList.insert(reference, new Student("Lupita"), ArrayList.InsertPosition.AFTER);
+        arrayList.insert(reference, new Student("Lupita"), Lists.InsertPosition.AFTER);
 
         // Then:
         assertEquals(4, arrayList.size());
@@ -261,7 +261,7 @@ public class ArrayListTest extends Lists{
         arrayList.add(new Student("Francisco"));
 
         // When:
-        arrayList.insert(reference, new Student("Lupita"), ArrayList.InsertPosition.AFTER);
+        arrayList.insert(reference, new Student("Lupita"), Lists.InsertPosition.AFTER);
 
         // Then:
         assertEquals(4, arrayList.size());

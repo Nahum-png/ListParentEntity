@@ -1,17 +1,17 @@
 
 package uaslp.enginering.labs.list;
 
+import uaslp.enginering.labs.list.model.Lists;
 import uaslp.enginering.labs.list.model.Object;
 
 
-public class Node<T> {
+public class Node<T>  {
     private Object element;
-    private Node previous;
-    private Node next;
+    private Node<T> previous;
+    private Node<T> next;
 
 
     public Node(java.lang.Object element) {
-        this.element = this.element;
     }
 
     public void setElement(Object element) {
@@ -22,20 +22,20 @@ public class Node<T> {
         return element;
     }
 
-    public void setPrevious(Node previous) {
+    public void setPrevious(Node<T> previous) {
         this.previous = previous;
     }
 
-    public Node getPrevious() {
+    public Node<T> getPrevious() {
         return previous;
     }
 
 
-    public void setNext(Node next){
+    public void setNext(Node<T> next){
         this.next=next;
     }
 
-    public Node getNext(){
+    public Node<T> getNext(){
         return next;
     }
 

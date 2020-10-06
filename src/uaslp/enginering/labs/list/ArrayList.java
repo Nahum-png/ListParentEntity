@@ -76,7 +76,6 @@ public class ArrayList<T> extends Lists {
         return index < lastIndex ? (T)elements[index] : null;
     }
 
-
     @Override
     public void insert(Object reference, Object newElement, Lists.InsertPosition position) {
         if (lastIndex == elements.length) {
@@ -85,7 +84,7 @@ public class ArrayList<T> extends Lists {
 
         for (int index = 0; index < lastIndex; index++) {
             if (elements[index].equals(reference)) {
-                if (position.equals(InsertPosition.BEFORE)) {
+                if (position.equals(Lists.InsertPosition.BEFORE)) {
                     for (int j = lastIndex; j > index; j--) {
                         elements[j] = elements[j - 1];
                     }
@@ -101,6 +100,8 @@ public class ArrayList<T> extends Lists {
         }
         lastIndex++;
     }
+
+
 
     private void increaseArraySize() {
         Object[] newArray = new Object[elements.length * 2];
