@@ -2,7 +2,6 @@ package uaslp.enginering.labs.list;
 
 import org.junit.jupiter.api.Test;
 import uaslp.enginering.labs.list.model.Lists;
-import uaslp.enginering.labs.list.model.Object;
 
 
 
@@ -14,7 +13,7 @@ public class LinkedListTest {
     @Test
     public void givenNewList_whenSize_thenZeroIsReturned() {
         // Given:
-        LinkedList list = new LinkedList<>();
+        LinkedList list = new LinkedList();
 
         // When:
         int size = list.size();
@@ -282,7 +281,7 @@ public class LinkedListTest {
         // Then:
         assertNotNull(iterator);
         assertTrue(iterator.hasNext());
-        Object student = iterator.next();
+        Student student = iterator.next();
         assertNotNull(student);
         assertEquals("Ivan", student.getName());
         assertFalse(iterator.hasNext());

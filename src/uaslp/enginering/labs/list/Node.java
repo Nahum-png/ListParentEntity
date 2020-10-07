@@ -1,42 +1,41 @@
-
 package uaslp.enginering.labs.list;
 
-import uaslp.enginering.labs.list.model.Lists;
-import uaslp.enginering.labs.list.model.Object;
+public class Node  {
+    private Student element;
+    private Node previous;
+    private Node next;
 
 
-public class Node<T>  {
-    private Object element;
-    private Node<T> previous;
-    private Node<T> next;
-
-
-    public Node(java.lang.Object element) {
-    }
-
-    public void setElement(Object element) {
+    public Node(Student element) {
         this.element = element;
     }
 
-    public Object getElement() {
+    public void setElement(Student element) {
+        this.element = element;
+    }
+
+    public Student getElement() {
         return element;
     }
 
-    public void setPrevious(Node<T> previous) {
+    public void setPrevious(Node previous) {
         this.previous = previous;
     }
 
-    public Node<T> getPrevious() {
+    public Node getPrevious() {
         return previous;
     }
 
 
-    public void setNext(Node<T> next){
+    public void setNext(Node next){
         this.next=next;
     }
 
-    public Node<T> getNext(){
+    public Node getNext(){
         return next;
     }
 
+    public Student getStudent() {
+        return element;
+    }
 }

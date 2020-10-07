@@ -11,7 +11,7 @@ public class ArrayListTest {
     @Test
     public void givenNewList_whenSize_thenZeroIsReturned() {
         // Given:
-        Lists<Student> arrayList = new ArrayList<>();
+        Lists arrayList = new ArrayList();
 
         // When:
         int size = arrayList.size();
@@ -23,7 +23,7 @@ public class ArrayListTest {
     @Test
     public void givenNewList_whenAdd_thenElementIsInserted() {
         // Given:
-        ArrayList<Student> arrayList = new ArrayList<>();
+        ArrayList arrayList = new ArrayList();
         Student student = new Student("Ivan");
 
         // When:
@@ -37,7 +37,7 @@ public class ArrayListTest {
     @Test
     public void givenAListWithNoMoreCapacity_whenAdd_thenElementIsInserted() {
         // Given:
-        ArrayList<Student> arrayList = new ArrayList<>(2);
+        ArrayList arrayList = new ArrayList(2);
 
         arrayList.add(new Student("Ivan"));
         arrayList.add(new Student("Israel"));
@@ -56,7 +56,7 @@ public class ArrayListTest {
     @Test
     public void givenAListWith3Elements_whenDeleteFirst_thenElementIsDeleted() {
         // Given:
-        ArrayList<Student> arrayList = new ArrayList<>();
+        ArrayList arrayList = new ArrayList();
 
         arrayList.add(new Student("Ivan"));
         arrayList.add(new Student("Israel"));
@@ -74,7 +74,7 @@ public class ArrayListTest {
     @Test
     public void givenAListWith3Elements_whenDeleteLast_thenElementIsDeleted() {
         // Given:
-        ArrayList<Student> arrayList = new ArrayList<>();
+        ArrayList arrayList = new ArrayList();
 
         arrayList.add(new Student("Ivan"));
         arrayList.add(new Student("Israel"));
@@ -92,7 +92,7 @@ public class ArrayListTest {
     @Test
     public void givenAListWith3Elements_whenDeleteMiddle_thenElementIsDeleted() {
         // Given:
-        ArrayList<Student> arrayList = new ArrayList<>();
+        ArrayList arrayList = new ArrayList();
 
         arrayList.add(new Student("Ivan"));
         arrayList.add(new Student("Israel"));
@@ -110,7 +110,7 @@ public class ArrayListTest {
     @Test
     public void givenAListWith3Elements_whenDeleteNegative_thenDoesNothing() {
         // Given:
-        ArrayList<Student> arrayList = new ArrayList<>();
+        ArrayList arrayList = new ArrayList();
 
         arrayList.add(new Student("Ivan"));
         arrayList.add(new Student("Israel"));
@@ -129,7 +129,7 @@ public class ArrayListTest {
     @Test
     public void givenAListWith3Elements_whenDeleteOutOfSize_thenDoesNothing() {
         // Given:
-        ArrayList<Student> arrayList = new ArrayList<>();
+        ArrayList arrayList = new ArrayList();
 
         arrayList.add(new Student("Ivan"));
         arrayList.add(new Student("Israel"));
@@ -148,7 +148,7 @@ public class ArrayListTest {
     @Test
     public void givenAListWith3Elements_whenInsertAtBeginningBefore_thenElementIsInserted() {
         // Given:
-        ArrayList<Student> arrayList = new ArrayList<>();
+        ArrayList arrayList = new ArrayList();
         Student reference = new Student("Ivan");
 
         arrayList.add(reference);
@@ -169,7 +169,7 @@ public class ArrayListTest {
     @Test
     public void givenAListWith3Elements_whenInsertAtEndBefore_thenElementIsInserted() {
         // Given:
-        ArrayList<Student> arrayList = new ArrayList<>();
+        ArrayList arrayList = new ArrayList();
         Student reference = new Student("Francisco");
 
         arrayList.add(new Student("Ivan"));
@@ -190,7 +190,7 @@ public class ArrayListTest {
     @Test
     public void givenAListWith3Elements_whenInsertAtMiddleBefore_thenElementIsInserted() {
         // Given:
-        ArrayList<Student> arrayList = new ArrayList<>();
+        ArrayList arrayList = new ArrayList();
         Student reference = new Student("Israel");
 
         arrayList.add(new Student("Ivan"));
@@ -211,7 +211,7 @@ public class ArrayListTest {
     @Test
     public void givenAListWith3Elements_whenInsertAtBeginningAfter_thenElementIsInserted() {
         // Given:
-        ArrayList<Student> arrayList = new ArrayList<>();
+        ArrayList arrayList = new ArrayList();
         Student reference = new Student("Ivan");
 
         arrayList.add(reference);
@@ -232,7 +232,7 @@ public class ArrayListTest {
     @Test
     public void givenAListWith3Elements_whenInsertAtEndAfter_thenElementIsInserted() {
         // Given:
-        ArrayList<Student> arrayList = new ArrayList<>();
+        ArrayList arrayList = new ArrayList();
         Student reference = new Student("Francisco");
 
         arrayList.add(new Student("Ivan"));
@@ -253,7 +253,7 @@ public class ArrayListTest {
     @Test
     public void givenAListWith3Elements_whenInsertAtMiddleAfter_thenElementIsInserted() {
         // Given:
-        ArrayList<Student> arrayList = new ArrayList<>();
+        ArrayList arrayList = new ArrayList();
         Student reference = new Student("Israel");
 
         arrayList.add(new Student("Ivan"));
@@ -274,10 +274,10 @@ public class ArrayListTest {
     @Test
     public void givenEmptyList_whenGetIterator_thenIteratorIsEmpty(){
         // Given:
-        ArrayList<Student> arrayList = new ArrayList<>();
+        ArrayList arrayList = new ArrayList();
 
         // When:
-        ArrayList<Student>.Iterator iterator = arrayList.getIterator();
+        ArrayList.Iterator iterator = arrayList.getIterator();
 
         // Then:
         assertNotNull(iterator);
@@ -288,12 +288,12 @@ public class ArrayListTest {
     @Test
     public void givenListWithOneElement_whenGetIterator_thenIteratorHasOneNext(){
         // Given:
-        ArrayList<Student> arrayList = new ArrayList<>();
+        ArrayList arrayList = new ArrayList();
 
         arrayList.add(new Student("Ivan"));
 
         // When:
-        ArrayList<Student>.Iterator iterator = arrayList.getIterator();
+        ArrayList.Iterator iterator = arrayList.getIterator();
 
         // Then:
         assertNotNull(iterator);
